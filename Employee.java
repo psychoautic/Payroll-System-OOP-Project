@@ -3,12 +3,14 @@ public class Employee {
     private String firstName;
     private String lastName;
     private double baseSalary;
+    private BankAccount bankAccount;
     
-    public Employee(String employeeId, String firstName, String lastName, double baseSalary) {
+    public Employee(String employeeId, String firstName, String lastName, double baseSalary, BankAccount bankAccount) {
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.baseSalary = baseSalary;
+        this.bankAccount = bankAccount;
     }
 
     
@@ -48,6 +50,12 @@ public class Employee {
         this.baseSalary = baseSalary;
     }
 
+    public BankAccount getBankAccount(){
+        return bankAccount;
+    }
+    public void setBankAccount(BankAccount bankAccount){
+        this.bankAccount = bankAccount;
+    }
 
 
 
