@@ -3,14 +3,12 @@ public class BankAccount {
     private int bankNumber;
     private int Iban;
     private int swift;
-    private double balance;
     
     public BankAccount(String name, int number, int iban, int swiftCode) {
         this.bankName = name;       // Set the bank name
         this.bankNumber = number;   // Set the account number
         this.Iban = iban;           // Set the IBAN
         this.swift = swiftCode;     // Set the SWIFT code
-        this.balance = 0.0;         // Initialize balance to zero
     }
     
     public void setAccountInfo(String name, int number, int iban, int swiftCode) {
@@ -21,20 +19,17 @@ public class BankAccount {
     }
   
     public boolean makePayment(double amount) {
-        // Check if amount is valid and sufficient balance exists
-        if (amount > 0 && amount <= this.balance) {
-            this.balance -= amount; // Deduct the payment amount from balance
-            return true;            // Return success
+        if (amount > 0) {
+            return true;   
         }
-        return false;               // Return failure
+        return false;
     }
   
     public boolean deposit(double amount) {
         if (amount > 0) {
-            this.balance += amount; // Add the amount to balance
-            return true;            // Return success
+            return true;   
         }
-        return false;               // Return failure
+        return false;
     }
     
     // Getters
@@ -54,10 +49,6 @@ public class BankAccount {
         return this.swift;
     }
     
-    public double getBalance() {
-        return this.balance;
-    }
-    
     // Setters
     public void setBankName(String name) {
         this.bankName = name;
@@ -75,3 +66,4 @@ public class BankAccount {
         this.swift = swiftCode;
     }
 }
+
