@@ -1,9 +1,11 @@
+import java.util.List;
 public class Employee {
     private int employeeId;
     private String firstName;
     private String lastName;
     private double baseSalary;
     private BankAccount bankAccount;
+    private List<Shift> assignedShifts;
 
     public Employee(int employeeId, String firstName, String lastName, double baseSalary) {
         this.employeeId = employeeId;
@@ -11,6 +13,7 @@ public class Employee {
         this.lastName = lastName;
         this.baseSalary = baseSalary;
         // this.bankAccount = bankAccount;
+        this.assignedShifts = new java.util.ArrayList<>();
     }
 
     public int getEmployeeId() {
@@ -61,6 +64,10 @@ public class Employee {
         System.out.println("Employee ID: " + employeeId);
         System.out.println("Name: " + firstName + " " + lastName);
         System.out.println("Base Salary: " + baseSalary);
+    }
+
+    public void addShift(Shift s) {
+        this.assignedShifts.add(s); 
     }
 
 }

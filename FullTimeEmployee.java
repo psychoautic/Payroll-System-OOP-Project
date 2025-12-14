@@ -9,7 +9,7 @@ class FullTimeEmployee extends Employee {
             double annualBonus,
             double baseSalary,
             BankAccount bankAccount) {
-        super(employeeId, firstName, lastName, baseSalary, bankAccount);
+        super(employeeId, firstName, lastName, baseSalary, bankAccount, );
         this.annualBonus = annualBonus;
     }
 
