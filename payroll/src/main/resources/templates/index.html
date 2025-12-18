@@ -25,19 +25,19 @@
         <section class="stats-grid">
             <div class="stat-card">
                 <div class="stat-label">Total Employees</div>
-                <div class="stat-value">1,240</div>
+                <div class="stat-value" th:text="${numberOfEmp}">0</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Monthly Payroll</div>
-                <div class="stat-value">$452,000</div>
+                <div class="stat-value" th:text="'$'+${totalPayout}">$452,000</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Pending Approvals</div>
-                <div class="stat-value" th:text="${number}"></div>
+                <div class="stat-value">0</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Tax Liability</div>
-                <div class="stat-value">$84,200</div>
+                <div class="stat-value" th:text="'$'+0.27*${totalPayout}">$84,200</div>
             </div>
         </section>
         <section class="table-container">
@@ -46,26 +46,23 @@
                 <thead>
                     <tr>
                         <th class="table-header">Employee Name</th>
-                        <th class="table-header">Department</th>
+                        <th class="table-header">Type</th>
                         <th class="table-header">Pay Date</th>
                         <th class="table-header">Amount</th>
                         <th class="table-header">Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="table-cell">John Doe</td>
-                        <td class="table-cell">Engineering</td>
-                        <td class="table-cell">Dec 15, 2025</td>
-                        <td class="table-cell">$5,500.00</td>
-                        <td class="table-cell"><span class="status-paid">Paid</span></td>
-                    </tr>
-                    <tr>
-                        <td class="table-cell">Jane Smith</td>
-                        <td class="table-cell">Marketing</td>
-                        <td class="table-cell">Dec 15, 2025</td>
-                        <td class="table-cell">$4,800.00</td>
-                        <td class="table-cell"><span class="status-pending">Pending</span></td>
+                    <tr th:each="emp : ${empList}">
+                        <td class="table-cell" th:text="${emp.getFirstName() + ' ' + emp.getLastName()}">John Doe</td>
+                        <td class="table-cell" th:text="${emp.getType()}">Engineering</td>
+                        <td class="table-cell">Jan 15, 2026</td>
+                        
+                        <td class="table-cell" th:text="'$' + ${emp.calculatePay()}">$5,500.00</td>
+                        
+                        <td class="table-cell">
+                            <span class="status-paid">Paid</span>
+                        </td>
                     </tr>
                 </tbody>
             </table>
