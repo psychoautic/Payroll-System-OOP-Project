@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll System Dashboard</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body class="dashboard-body">
+    <nav class="sidebar-container">
+        <div class="sidebar-logo">PayrollPro</div>
+        <ul class="sidebar-menu">
+            <li class="menu-item">Dashboard</li>
+            <li class="menu-item">Employees</li>
+            <li class="menu-item">Payroll Run</li>
+            <li class="menu-item">Reports</li>
+            <li class="menu-item">Settings</li>
+        </ul>
+    </nav>
+    <main class="main-content">
+        <header class="top-bar">
+            <h1 class="page-title">Payroll Overview</h1>
+            <div class="user-profile">Admin User</div>
+        </header>
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Total Employees</div>
+                <div class="stat-value">1,240</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Monthly Payroll</div>
+                <div class="stat-value">$452,000</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Pending Approvals</div>
+                <div class="stat-value" th:text="${number}"></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Tax Liability</div>
+                <div class="stat-value">$84,200</div>
+            </div>
+        </section>
+        <section class="table-container">
+            <h2 class="table-heading">Recent Transactions</h2>
+            <table class="payroll-table">
+                <thead>
+                    <tr>
+                        <th class="table-header">Employee Name</th>
+                        <th class="table-header">Department</th>
+                        <th class="table-header">Pay Date</th>
+                        <th class="table-header">Amount</th>
+                        <th class="table-header">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="table-cell">John Doe</td>
+                        <td class="table-cell">Engineering</td>
+                        <td class="table-cell">Dec 15, 2025</td>
+                        <td class="table-cell">$5,500.00</td>
+                        <td class="table-cell"><span class="status-paid">Paid</span></td>
+                    </tr>
+                    <tr>
+                        <td class="table-cell">Jane Smith</td>
+                        <td class="table-cell">Marketing</td>
+                        <td class="table-cell">Dec 15, 2025</td>
+                        <td class="table-cell">$4,800.00</td>
+                        <td class="table-cell"><span class="status-pending">Pending</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
