@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import com.payrollsystem.project.models.Employee;
-import com.payrollsystem.project.services.DataService;
+import com.payrollsystem.project.services.EmployeeDataService;
 
 @Controller
 @RequestMapping("/api/employees")
@@ -44,10 +44,10 @@ public class EmployeeController {
     }
 
     public void saveToJSON() {
-        DataService.saveToJson(employeeList);
+        EmployeeDataService.saveToJson(employeeList);
     }
 
     public ArrayList<Employee> loadFromJSON() {
-        return DataService.loadFromJson();
+        return EmployeeDataService.loadFromJson();
     }
 }

@@ -1,6 +1,7 @@
 package com.payrollsystem.project.services;
 
 import com.payrollsystem.project.models.Employee;
+import com.payrollsystem.project.models.Shift;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.stereotype.Service;
@@ -10,12 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class DataService {
+public class ShiftDataService {
 
     private static final ObjectMapper mapper = new ObjectMapper();
-    private static final String FILE_PATH = "payroll/src/main/resources/employees.json";
+    private static final String FILE_PATH = "payroll/src/main/resources/shifts.json";
 
-    public static void saveToJson(List<Employee> employees) {
+    public static void saveToJson(ArrayList<Shift> employees) {
         try {
             File file = new File(FILE_PATH);
 
@@ -37,17 +38,19 @@ public class DataService {
         }
     }
 
-    public static ArrayList<Employee> loadFromJson() {
+    public static ArrayList<Shift> loadFromJson() {
         File file = new File(FILE_PATH);
 
         // Check if file exists and is not empty
         if (!file.exists() || file.length() == 0) {
             System.out.println("No existing data found. Starting with empty list.");
             return new ArrayList<>();
+        } else {
+            System.out.println("Shift File Exists");
         }
 
         try {
-            return mapper.readValue(file, new TypeReference<ArrayList<Employee>>() {
+            return mapper.readValue(file, new TypeReference<ArrayList<Shift>>() {
             });
         } catch (IOException e) {
             e.printStackTrace();

@@ -24,6 +24,14 @@ public class Employee {
         this.bankAccount = new BankAccount(bankName, bankNumber, iban, swiftCode);
     }
 
+    public boolean isPayStatus() {
+        return payStatus;
+    }
+
+    public void setPayStatus(boolean payStatus) {
+        this.payStatus = payStatus;
+    }
+
     public int getEmployeeId() {
         return employeeId;
     }
