@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payroll System Dashboard</title>
     <link rel="stylesheet" th:href="@{/style.css}">
+
 </head>
 <body class="dashboard-body">
     <nav class="sidebar-container">
         <div class="sidebar-logo">PayrollPro</div>
-        <ul class="sidebar-menu">
-            <li class="menu-item">Dashboard</li>
-            <li class="menu-item">Employees</li>
-            <li class="menu-item">Payroll Run</li>
-            <li class="menu-item">Reports</li>
-            <li class="menu-item">Settings</li>
-        </ul>
+        <div class="sidebar-menu">
+            <a class="menu-item" href="">Dashboard</a>
+            <a class="menu-item" href="Employees">Employees</a>
+            <a class="menu-item" href="Shifts">Shifts</a>
+            <a class="menu-item">Payroll Run</a>
+            <a class="menu-item">Settings</a>
+        </div>
     </nav>
     <main class="main-content">
         <header class="top-bar">
@@ -32,12 +33,12 @@
                 <div class="stat-value" th:text="'$'+${totalPayout}">$452,000</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">Pending Approvals</div>
-                <div class="stat-value">0</div>
+                <div class="stat-label">Tax Percentage</div>
+                <div class="stat-value">27.5%</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Tax Liability</div>
-                <div class="stat-value" th:text="'$'+0.27*${totalPayout}">$84,200</div>
+                <div class="stat-value" th:text="'$'+0.275*${totalPayout}">$84,200</div>
             </div>
         </section>
         <section class="table-container">

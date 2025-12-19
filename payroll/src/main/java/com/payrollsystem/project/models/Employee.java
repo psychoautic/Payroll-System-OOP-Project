@@ -9,6 +9,10 @@ public class Employee {
     private String type;
     private boolean payStatus;
 
+    public Employee() {
+
+    }
+
     public Employee(int employeeId, String firstName, String lastName,
             double baseSalary, String bankName, int bankNumber, String iban, String swiftCode) {
         this.employeeId = employeeId;
@@ -26,6 +30,10 @@ public class Employee {
 
     public String getType() {
         return this.type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public void setEmployeeId(int employeeId) {

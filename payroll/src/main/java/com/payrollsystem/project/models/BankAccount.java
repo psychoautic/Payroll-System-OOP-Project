@@ -7,6 +7,10 @@ public class BankAccount {
     private String swift;
     private int balance;
 
+    public BankAccount() {
+
+    }
+
     public BankAccount(String bankName, int bankNumber, String iban, String swiftCode) {
         this.bankName = bankName;
         this.bankNumber = bankNumber;

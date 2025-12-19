@@ -5,14 +5,13 @@ import com.payrollsystem.project.models.Employee;
 public class FullTimeEmployee extends Employee {
 
     private double annualBonus;
-    private String type;
 
     public FullTimeEmployee(int employeeId, String firstName, String lastName,
             double annualBonus, double baseSalary, String bankName, int bankNumber, String iban, String swiftCode) {
 
         super(employeeId, firstName, lastName, baseSalary, bankName, bankNumber, iban, swiftCode);
         this.annualBonus = annualBonus;
-        this.type = "Full Time";
+        super.setType("Full-Time");
     }
 
     public double getAnnualBonus() {

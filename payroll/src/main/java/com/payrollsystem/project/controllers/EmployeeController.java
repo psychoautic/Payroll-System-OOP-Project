@@ -2,22 +2,32 @@ package com.payrollsystem.project.controllers;
 
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.ModelAttribute;
 import com.payrollsystem.project.models.Employee;
+import com.payrollsystem.project.services.DataService;
 
-@RestController
+@Controller
 @RequestMapping("/api/employees")
 public class EmployeeController {
 
     private ArrayList<Employee> employeeList;
 
     public EmployeeController() {
-        employeeList = new ArrayList<Employee>();
-        employeeList.add(new Employee(353, "Eyad", "Mahmoud", 4500, "CIB", 432, "HIT0000JAHV480000JJ", "JJWW31C"));
-        employeeList.add(new Employee(945, "Mahmoud", "Hesham", 5400, "AlAhly", 133, "FRR00KALV460070AJ", "EER3TT2"));
+        employeeList = loadFromJSON();
+    }
+
+    @PostMapping("/addEmployee")
+    public String addEmployee(@ModelAttribute Employee employee) {
+        this.employeeList.add(employee);
+        System.out.println("Saving employee: " + employee.getFirstName());
+        saveToJSON();
+        return "redirect:/";
     }
 
     public ArrayList<Employee> getAllEmployeesWithoutAPI() {
@@ -31,5 +41,13 @@ public class EmployeeController {
         }
 
         return amount;
+    }
+
+    public void saveToJSON() {
+        DataService.saveToJson(employeeList);
+    }
+
+    public ArrayList<Employee> loadFromJSON() {
+        return DataService.loadFromJson();
     }
 }

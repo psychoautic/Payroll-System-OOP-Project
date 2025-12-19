@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+
+</head>
+<body class="dashboard-body">
+    <nav class="sidebar-container">
+        <div class="sidebar-logo">PayrollPro</div>
+        <ul class="sidebar-menu">
+            <a class="menu-item" href="/">Dashboard</a>
+            <a class="menu-item" href="Employees">Employees</a>
+            <li class="menu-item">Employees</li>
+            <li class="menu-item">Payroll Run</li>
+            <li class="menu-item">Reports</li>
+            <li class="menu-item">Settings</li>
+        </ul>
+    </nav>
+    <main class="main-content">
+        <header class="top-bar">
+            <h1 class="page-title">Employee Management</h1>
+            <div class="user-profile">Admin User</div>
+        </header>
+
+        <section class="form-container">
+            <h2 class="form-heading">Register New Employee</h2>
+            <form class="employee-form" th:action="@{/api/employees/addEmployee}" th:object="${employee}" method="post">
+                <div class="form-group">
+                    <label class="input-label">Employee ID</label>
+                    <input type="number" th:field="*{employeeId}" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="input-label">First Name</label>
+                    <input type="text" th:field="*{firstName}" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="input-label">Last Name</label>
+                    <input type="text" th:field="*{lastName}" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="input-label">Base Salary</label>
+                    <input type="number" step="0.01" th:field="*{baseSalary}" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="input-label">Bank Name</label>
+                    <input type="text" th:field="*{bankAccount.bankName}" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="input-label">Bank Number</label>
+                    <input type="number" th:field="*{bankAccount.bankNumber}" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="input-label">IBAN</label>
+                    <input type="text" th:field="*{bankAccount.iban}" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="input-label">SWIFT Code</label>
+                    <input type="text" th:field="*{bankAccount.swift}" class="form-input" required>
+                </div>
+                <button type="submit" class="submit-button">Save Employee Record</button>
+            </form>
+        </section>
+
+        <section class="table-container">
+            <h2 class="table-heading">Employee List</h2>
+            <table class="payroll-table">
+                <thead>
+                    <tr>
+                        <th class="table-header">Employee Name</th>
+                        <th class="table-header">Department</th>
+                        <th class="table-header">Pay Date</th>
+                        <th class="table-header">Amount</th>
+                        <th class="table-header">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="table-cell">John Doe</td>
+                        <td class="table-cell">Engineering</td>
+                        <td class="table-cell">Dec 15, 2025</td>
+                        <td class="table-cell">$5,500.00</td>
+                        <td class="table-cell"><span class="status-paid">Paid</span></td>
+                    </tr>
+                    <tr>
+                        <td class="table-cell">Jane Smith</td>
+                        <td class="table-cell">Marketing</td>
+                        <td class="table-cell">Dec 15, 2025</td>
+                        <td class="table-cell">$4,800.00</td>
+                        <td class="table-cell"><span class="status-pending">Pending</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
