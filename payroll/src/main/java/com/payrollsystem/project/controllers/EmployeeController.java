@@ -32,6 +32,7 @@ public class EmployeeController {
 
     @PostMapping("/addEmployee")
     public String addEmployee(@ModelAttribute Form form) {
+
         Employee employee;
         Shift shift = shiftController.searchForShift(form.getShiftID());
         if (form.getType().equals("No Type")) {
