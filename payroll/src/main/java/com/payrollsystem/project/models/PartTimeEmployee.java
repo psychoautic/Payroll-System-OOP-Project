@@ -7,6 +7,9 @@ class PartTimeEmployee extends Employee {
     private double hourlyRate;
     private int hoursWorked;
 
+    public PartTimeEmployee() {
+    }
+
     public PartTimeEmployee(int employeeId, String firstName, String lastName, double baseSalary,
             BankAccount bankAccount, double hourlyRate, int hoursWorked,
             String bankName, int bankNumber, String iban, String swiftCode) {

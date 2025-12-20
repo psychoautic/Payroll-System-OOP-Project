@@ -6,6 +6,10 @@ public class FullTimeEmployee extends Employee {
 
     private double annualBonus;
 
+    public FullTimeEmployee() {
+
+    }
+
     public FullTimeEmployee(int employeeId, String firstName, String lastName,
             double annualBonus, double baseSalary, String bankName, int bankNumber, String iban, String swiftCode) {
 
@@ -25,7 +29,7 @@ public class FullTimeEmployee extends Employee {
     @Override
 
     public double calculatePay() {
-        return getBaseSalary() + annualBonus;
+        return (getBaseSalary() * annualBonus) + getBaseSalary();
     }
 
     @Override

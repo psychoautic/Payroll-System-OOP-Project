@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.payrollsystem.project.models.BankAccount;
 import com.payrollsystem.project.models.Employee;
+import com.payrollsystem.project.models.Form;
 import com.payrollsystem.project.models.Shift;
 
 @Controller
@@ -30,9 +31,9 @@ public class WebController {
 
     @GetMapping("Employees")
     public String EmployeePage(Model model) {
-        Employee employee = new Employee();
-        employee.setBankAccount(new BankAccount());
-        model.addAttribute("employee", employee);
+        Form form = new Form();
+        // employee.setBankAccount(new BankAccount());
+        model.addAttribute("empform", form);
         model.addAttribute("empList", empController.getAllEmployeesWithoutAPI());
         System.out.println("routing");
         return "Employees";

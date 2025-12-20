@@ -1,5 +1,16 @@
 package com.payrollsystem.project.models;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, // Uses your existing 'type'
+                                                                                       // field
+        property = "type", visible = true)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = FullTimeEmployee.class, name = "Full-Time"),
+        @JsonSubTypes.Type(value = PartTimeEmployee.class, name = "Part-Time"),
+        @JsonSubTypes.Type(value = Employee.class, name = "No Type")
+})
 public class Employee {
     private int employeeId;
     private String firstName;

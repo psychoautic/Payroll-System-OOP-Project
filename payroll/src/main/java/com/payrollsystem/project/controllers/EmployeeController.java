@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import com.payrollsystem.project.models.Employee;
+import com.payrollsystem.project.models.Form;
+import com.payrollsystem.project.models.FullTimeEmployee;
 import com.payrollsystem.project.services.EmployeeDataService;
 
 @Controller
@@ -24,7 +26,16 @@ public class EmployeeController {
     }
 
     @PostMapping("/addEmployee")
-    public String addEmployee(@ModelAttribute Employee employee) {
+    public String addEmployee(@ModelAttribute Form form) {
+        Employee employee;
+        if (form.getType().equals("No Type")) {
+            employee = new Employee(form.employeeId, form.firstName, form.lastName, form.baseSalary,
+                    form.bankName, form.bankNumber, form.Iban, form.swift);
+        } else {
+            employee = new FullTimeEmployee(form.employeeId, form.firstName, form.lastName, form.annualBonus,
+                    form.baseSalary,
+                    form.bankName, form.bankNumber, form.Iban, form.swift);
+        }
         this.employeeList.add(employee);
         System.out.println("Saving employee: " + employee.getFirstName());
         saveToJSON();
