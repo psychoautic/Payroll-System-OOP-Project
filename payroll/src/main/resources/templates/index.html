@@ -62,7 +62,8 @@
                         <td class="table-cell" th:text="'$' + ${emp.calculatePay()}">$5,500.00</td>
                         
                         <td class="table-cell">
-                            <span class="status-paid">Paid</span>
+                            <span class="status-paid" th:if="${emp.getPayStatus()}">Paid</span>
+                            <span class="status-pending" th:if="${!emp.getPayStatus()}">Pending</span>
                         </td>
                     </tr>
                 </tbody>

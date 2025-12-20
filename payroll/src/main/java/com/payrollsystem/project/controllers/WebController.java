@@ -33,6 +33,7 @@ public class WebController {
         Employee employee = new Employee();
         employee.setBankAccount(new BankAccount());
         model.addAttribute("employee", employee);
+        model.addAttribute("empList", empController.getAllEmployeesWithoutAPI());
         System.out.println("routing");
         return "Employees";
     }
