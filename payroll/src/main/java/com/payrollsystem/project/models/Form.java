@@ -14,6 +14,16 @@ public class Form {
     public String swift;
     public int balance;
 
+    public int shiftID;
+
+    public int getShiftID() {
+        return shiftID;
+    }
+
+    public void setShiftID(int shiftID) {
+        this.shiftID = shiftID;
+    }
+
     public Form() {
     }
 

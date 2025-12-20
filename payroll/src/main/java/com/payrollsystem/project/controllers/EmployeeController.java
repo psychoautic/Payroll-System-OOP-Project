@@ -20,9 +20,12 @@ import com.payrollsystem.project.services.EmployeeDataService;
 public class EmployeeController {
 
     private ArrayList<Employee> employeeList;
+    private ShiftController shiftController;
 
     public EmployeeController() {
         employeeList = loadFromJSON();
+        shiftController = new ShiftController();
+
     }
 
     @PostMapping("/addEmployee")
@@ -36,6 +39,8 @@ public class EmployeeController {
                     form.baseSalary,
                     form.bankName, form.bankNumber, form.Iban, form.swift);
         }
+
+        employee.setShift(shiftController.searchForShift(form.getShiftID()));
         this.employeeList.add(employee);
         System.out.println("Saving employee: " + employee.getFirstName());
         saveToJSON();

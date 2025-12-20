@@ -23,12 +23,10 @@ public class ShiftController {
 
     @PostMapping("/addShift")
     public String addShift(@ModelAttribute Shift shift) {
+        shift.setShiftID();
         this.shiftList.add(shift);
-        for (int i = 0; i < 10; i++) {
-            System.out.println("Saving shift: " + shift.getShiftName());
-        }
+
         saveToJSON();
-        // return "Ok";
         return "redirect:/Shifts";
     }
 
@@ -40,6 +38,15 @@ public class ShiftController {
             System.out.println("Shift list is empty");
         }
         return shiftList;
+    }
+
+    public Shift searchForShift(int id) {
+        for (int i = 0; i < shiftList.size(); i++) {
+            if (shiftList.get(i).getShiftID() == id) {
+                return shiftList.get(i);
+            }
+        }
+        return shiftList.get(0);
     }
 
     public void saveToJSON() {

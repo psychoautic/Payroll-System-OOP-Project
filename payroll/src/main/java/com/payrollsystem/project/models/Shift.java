@@ -6,6 +6,7 @@ import java.time.temporal.ChronoUnit;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Shift {
+    private int shiftID;
     private String shiftName;
     private String startTime;
     private String endTime;
@@ -18,10 +19,19 @@ public class Shift {
         this.shiftName = shiftName;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.shiftID = (int) (Math.random() * 1000);
     }
 
     public String getShiftName() {
         return shiftName;
+    }
+
+    public int getShiftID() {
+        return shiftID;
+    }
+
+    public void setShiftID() {
+        this.shiftID = (int) (Math.random() * 1000);
     }
 
     public void setShiftName(String shiftName) {

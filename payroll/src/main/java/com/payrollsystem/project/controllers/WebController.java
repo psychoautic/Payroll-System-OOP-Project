@@ -32,9 +32,11 @@ public class WebController {
     @GetMapping("Employees")
     public String EmployeePage(Model model) {
         Form form = new Form();
+        form.setType("");
         // employee.setBankAccount(new BankAccount());
         model.addAttribute("empform", form);
         model.addAttribute("empList", empController.getAllEmployeesWithoutAPI());
+        model.addAttribute("shiftList", shiftController.getAllShiftsWithoutAPI());
         System.out.println("routing");
         return "Employees";
     }

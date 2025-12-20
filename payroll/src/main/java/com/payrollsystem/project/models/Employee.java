@@ -17,8 +17,18 @@ public class Employee {
     private String lastName;
     private double baseSalary;
     private BankAccount bankAccount;
+
     private String type;
     private boolean payStatus;
+    private Shift shift;
+
+    public Shift getShift() {
+        return shift;
+    }
+
+    public void setShift(Shift shift) {
+        this.shift = shift;
+    }
 
     public Employee() {
 
