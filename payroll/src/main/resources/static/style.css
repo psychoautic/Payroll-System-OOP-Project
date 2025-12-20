@@ -205,3 +205,33 @@
     color: rgb(255, 42, 81);
     background-color: rgb(255, 190, 190);
 }
+
+.pay-button{
+    padding: 5px;
+    padding-inline: 10px;
+    text-decoration: none;
+    background-color: rgb(0, 132, 24);
+    color: white;
+    border-radius: 10px;
+    border: none;
+    margin: auto;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.pay-button:hover{
+    color: rgb(0, 132, 24);
+    background-color: rgb(147, 255, 167);
+}
+
+.disabled-button{
+    padding: 5px;
+    padding-inline: 10px;
+    text-decoration: none;
+    background-color: rgb(84, 185, 102);
+    color: white;
+    border-radius: 10px;
+    border: none;
+    margin: auto;
+    transition: 0.3s;
+    cursor: not-allowed;
+}

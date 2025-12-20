@@ -2,16 +2,16 @@ package com.payrollsystem.project.models;
 
 import com.payrollsystem.project.models.Employee;
 
-class PartTimeEmployee extends Employee {
+public class PartTimeEmployee extends Employee {
 
     private double hourlyRate;
-    private int hoursWorked;
+    private double hoursWorked;
 
     public PartTimeEmployee() {
     }
 
-    public PartTimeEmployee(int employeeId, String firstName, String lastName, double baseSalary,
-            BankAccount bankAccount, double hourlyRate, int hoursWorked,
+    public PartTimeEmployee(int employeeId, String firstName, String lastName, double baseSalary, double hourlyRate,
+            double hoursWorked,
             String bankName, int bankNumber, String iban, String swiftCode) {
 
         super(employeeId, firstName, lastName, baseSalary, bankName, bankNumber, iban, swiftCode);
@@ -28,7 +28,7 @@ class PartTimeEmployee extends Employee {
         this.hourlyRate = hourlyRate;
     }
 
-    public int getHoursWorked() {
+    public double getHoursWorked() {
         return hoursWorked;
     }
 

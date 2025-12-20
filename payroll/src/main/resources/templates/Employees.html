@@ -48,9 +48,9 @@
                     <label class="input-label">Last Name</label>
                     <input type="text" th:field="*{lastName}" class="form-input" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="salaryGroup">
                     <label class="input-label">Base Salary</label>
-                    <input type="number" step="0.01" th:field="*{baseSalary}" class="form-input" required>
+                    <input type="number" id="salaryInput" step="0.01" th:field="*{baseSalary}" class="form-input" required>
                 </div>
                 <div class="form-group" id="bonusGroup">
                     <label class="input-label">Annual Bonus</label>
@@ -98,9 +98,11 @@
         <script>
             const hourlyGroup = document.getElementById("hourlyGroup");
             const bonusGroup = document.getElementById("bonusGroup");
+            const salaryGroup = document.getElementById("salaryGroup");
 
             const hourlyInput= document.getElementById("hourlyInput");
-            const bonusInput = document.getElementById("bonusGroup");
+            const bonusInput = document.getElementById("bonusInput");
+            const salaryInput = document.getElementById("salaryInput");
 
             const typeSelector = document.getElementById("typeSelector");
             function changeForm()
@@ -109,25 +111,31 @@
                 {
                     bonusGroup.style.display = "none";
                     hourlyGroup.style.display = "none";
+                    salaryGroup.style.display = "flex";
 
                     bonusInput.required = false;
                     hourlyInput.required = false;
+                    salaryInput.required = true;
                 }
                 else if(typeSelector.value == "Full-Time")
                 {
                     bonusGroup.style.display = "flex";
                     hourlyGroup.style.display = "none";
-                    
+                    salaryGroup.style.display = "flex";
+
                     bonusInput.required = true;
                     hourlyInput.required = false;
+                    salaryInput.required = true;
                 }
                 else
                 {
                     bonusGroup.style.display = "none";
                     hourlyGroup.style.display = "flex";
+                    salaryGroup.style.display = "none";
 
                     bonusInput.required = false;
                     hourlyInput.required = true;
+                    salaryInput.required = false;
                 }
             }
         </script>
@@ -140,6 +148,7 @@
                         <th class="table-header">Type</th>
                         <th class="table-header">Base Salary</th>
                         <th class="table-header">Final Salary</th>
+                        <th class="table-header">Send Payment</th>
                         <th class="table-header">Remove</th>
                     </tr>
                 </thead>
@@ -147,10 +156,14 @@
                     <tr th:each="emp : ${empList}">
                         <td class="table-cell" th:text="${emp.getFirstName() + ' ' + emp.getLastName()}">John Doe</td>
                         <td class="table-cell" th:text="${emp.getType()}">Type</td>
-                        <td class="table-cell" th:text="'$' +${emp.getBaseSalary()}">$2000</td>
-                        
+                        <td class="table-cell" th:if="${emp.getBaseSalary()} > 0" th:text="'$' +${emp.getBaseSalary()}">$2000</td>
+                        <td class="table-cell" th:if="${emp.getBaseSalary()} <= 0" th:text="'$' +(${emp.calculatePay()} / ${emp.getShift().getDurationHours()} + '*' + ${emp.getShift().getDurationHours()})">$2000</td>
                         <td class="table-cell" th:text="'$' + ${emp.calculatePay()}">$5,500.00</td>
                         
+                        <td class="table-cell">
+                            <a class="pay-button" th:if="${!emp.getPayStatus()}" th:href="@{/api/employees/payEmployee/{id}(id=${emp.getEmployeeId()})}">Pay</a>
+                            <button class="disabled-button" th:if="${emp.getPayStatus()}" disabled>Pay</button>
+                        </td>
                         <td class="table-cell">
                             <a class="remove-button" th:href="@{/api/employees/removeEmployee/{id}(id=${emp.getEmployeeId()})}">Remove</a>
                         </td>
